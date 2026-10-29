@@ -36,14 +36,14 @@
 
 ### 恢复与授权
 
-目标 phase、revision 和历史可随会话恢复；但续行启用状态只在进程内有效。恢复、fork 或驱动器重建后，active 目标不会自动开始工作，需要显式 resume 重新授权。暂时性的提供方或持久化失败也不会由该驱动器隐式重试。只有轮次上限，token、费用和时间预算是独立问题。[目标状态](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/packages/goal/goal/README.zh.md) · [续行驱动器](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/packages/goal/goal-round-driver/README.zh.md)
+目标 phase、revision 和历史可随会话恢复；但续行启用状态只在进程内有效。恢复、fork 或驱动器重建后，active 目标不会自动开始工作，需要显式 resume 重新授权。暂时性的提供方或持久化失败也不会由该驱动器隐式重试。轮次上限与时间等运行边界是不同机制。[目标状态](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/packages/goal/goal/README.zh.md) · [续行驱动器](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/packages/goal/goal-round-driver/README.zh.md)
 
 ## 3. 它没有直接解决什么
 
 - **目的是否理解正确**：能创建 objective，不等于能够从模糊愿望可靠推断目的、边界和验收要求。
 - **完成是否真实**：文档明确没有独立评估器；完成与阻塞仍由策略和调用方判断。提示词要求提供证据，不等于存在自动验收机制。
 - **会话之外的目标连续性**：设计是同一会话目标，不是跨会话、多 Bot 的任务系统。会话分段、委派和任务所有权需单独设计。
-- **资源与失败处理**：轮次上限不是时间或费用预算；外部副作用是否成功、是否安全重试，需要实际状态和具体工具配合判断。
+- **失败处理**：轮次上限不代表外部副作用成功；是否安全重试，需要实际状态和具体工具配合判断。
 - **交付感**：有目标、进度或多轮执行，不自动等于符合用户目的的完整产物。
 
 ## 4. 从底层能力到团队交付：候选架构
@@ -98,7 +98,7 @@ DSH 接入层：会话、Agent、工具、事件、可选 goal 与续行
 | Bot 个体记忆 | 身份、个人工作经验、长期偏好及被允许保存的知识 | 对应 Bot；不得因为加入群而默认广播 |
 | 经授权的共享知识 | 用户指定可复用的文档、结论和证据 | 有权限的 Bot、群或后续任务；标记来源与适用范围 |
 
-**工作上下文不等于长期记忆。** 每个成员不必接收所有群历史；应获得任务所需的最新目标、相关约束、阶段成果及来源，并能回查原始记录。模型摘要是候选表示，不能自动覆盖用户原话或把推断升级为事实。记忆写入、检索、更新、冲突处理、权限、删除与溯源都需定义；实际项目中的个人和组织知识须由其拥有者决定共享范围。[DSBot 既有上下文设计](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/docs/plans/2026-10-09-context-and-memory.md)
+**工作上下文不等于长期记忆。** 每个成员不必接收所有群历史；应获得任务所需的最新目标、相关约束、阶段成果及来源，并能回查原始记录。模型摘要是候选表示，不能自动覆盖用户原话或把推断升级为事实。记忆写入、检索、更新、冲突处理、权限、删除与溯源都需定义；实际项目中的个人和组织知识须由其拥有者决定共享范围。[DSBot 既有上下文设计](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/docs/plans/2026-10-09-context-and-memory.md)
 
 跨会话或压缩后，任务层需能恢复当前目标、责任归属、待办和证据，并让群成员按需重新取得上下文。`dsh-goal` 的权威范围是单会话；不能把它直接视作群的共享记忆或跨 Bot 任务状态。Graph Memory、DSH Mnemon 和 DSBot 是可研究的外部实现，尚需实验判断其机制是否提高任务完成质量。
 
