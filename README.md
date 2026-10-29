@@ -24,6 +24,12 @@ Nuska 是一个长期研究与实践项目，探索如何让 AI 理解人的意�
 
 当前处于问题梳理和研究阶段；上述目标是研究方向，不代表项目已经具备这些能力。
 
+## 参与研究
+
+欢迎通过 [Issues](https://github.com/Liyuk/nuska/issues) 提出研究问题、补充资料或报告错误；参与方式和证据标准见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+仓库目前尚未声明开源许可证。
+
 ## 名称
 
 Nuska 源自美索不达米亚神话。在一则古代文本中，Nuska 领会意图、与委托者商议，并代为执行。这个形象为项目的研究方向提供了灵感。[来源：牛津大学苏美尔文学电子文本语料库](https://etcsl.orinst.ox.ac.uk/edition2/etcslgloss.php?charenc=&lookup=c4051.104&sn=ON)。

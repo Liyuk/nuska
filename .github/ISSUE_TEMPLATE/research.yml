@@ -1,0 +1,21 @@
+name: 研究问题或资料
+description: 提出研究问题、补充资料或建议实验
+labels: [research]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: 研究问题
+      description: 你希望回答什么问题？它与 Nuska 的目标有什么关系？
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已有资料与证据
+      description: 提供来源链接、版本，以及尚未核实的部分。
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 预期产物或验证方式
+      description: 例如研究报告、案例、对照实验或原型。

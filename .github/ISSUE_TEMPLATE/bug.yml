@@ -1,0 +1,20 @@
+name: 错误报告
+description: 报告文档错误、失效链接或项目功能问题
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题
+      description: 发生了什么？预期是什么？
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现和证据
+      description: 提供相关页面、步骤、版本和可公开的日志；请勿包含密钥或私人信息。
+  - type: textarea
+    id: context
+    attributes:
+      label: 补充信息
