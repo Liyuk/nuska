@@ -1,0 +1,26 @@
+# DS Bot 社区讨论：本人原帖归档
+
+这里收录 Liyuk 在 Fei2411/DS-Bot 公开发布的 Discussion 原帖快照，保留原文与来源。归档时间为 2026-10-29；帖子编辑、回复和当前状态以 GitHub 原讨论为准。其他人的帖子和回复不在此转载。DS Bot 是外部项目，与 Nuska 的所有权无关。
+
+- [#638 建议支持侧栏自定义可折叠分组，整理 Bot 和群聊](posts/638.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/638)
+- [#639 [Feature] 统一封装常用服务连接器：从邮件开始](posts/639.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/639)
+- [#642 建议允许只选择一个 Bot 创建群聊](posts/642.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/642)
+- [#643 建议：群聊中的 Bot 能跨群协作、更新信息并安排定时任务](posts/643.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/643)
+- [#644 用量页优先展示已有数据，后台增量更新](posts/644.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/644)
+- [#645 建议：按任务推荐 Bot 和群组，让团队更容易开始工作](posts/645.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/645)
+- [#647 [Feature] @ 菜单支持通过拼音查找中文 Bot 名字](posts/647.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/647)
+- [#648 [Feature] 群聊支持引用选中文字并标明 Bot 来源](posts/648.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/648)
+- [#649 建议支持拖拽调整侧栏 Bot 和群聊的顺序](posts/649.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/649)
+- [#650 建议：自托管的远程 Bot 工作区，让团队持续工作并随时访问](posts/650.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/650)
+- [#651 建议：工作中的 Bot 默认及时接收用户消息，由模型判断如何回应](posts/651.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/651)
+- [#652 建议：提升 Bot 的目标理解、任务交付和自主恢复能力](posts/652.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/652)
+- [#653 如何参与 DS Bot 贡献并成为 collaborator？](posts/653.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/653)
+- [#656 建议：Bot 有结果或需要关注时发送通知](posts/656.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/656)
+- [#657 讨论：Agentic Bot 团队最佳实践、功能目标与 Benchmark](posts/657.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/657)
+- [#659 讨论：群聊的 token 用量、模型费用和缓存如何度量？](posts/659.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/659)
+- [#660 讨论：用 Jev 一类决策模型优化 Bot 间协作？](posts/660.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/660)
+- [#661 建议：支持对 Bot 消息进行 emoji 互动（低优先级）](posts/661.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/661)
+- [#675 建议：让定时任务按 Bot 和群分配、配置与查看](posts/675.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/675)
+- [#676 建议：群管理员默认总结讨论结论和后续行动](posts/676.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/676)
+- [#677 建议：让记忆摘要预览在生成时保持可用并说明等待状态](posts/677.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/677)
+- [#678 完善 DS Bot、DSH 和发布流程的工程稳定性监控](posts/678.md) · [GitHub 原讨论](https://github.com/Fei2411/DS-Bot/discussions/678)
