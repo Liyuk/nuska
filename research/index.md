@@ -27,6 +27,7 @@
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
 - [DSH、Pi 与 Hermes 接入调研](landscape/2026-10-29-harness-integration.md)。
 
+- [System Prompts Leaks：Grok Bot 提示词与工具线索](sources/2026-10-29-system-prompts-leaks.md)。
 - [Grok Bot 逆向研究资料：阅读入口与适用边界](sources/2026-10-29-grok-bot-analysis.md)。
 - [DSH 现有能力组合：多 Bot 群聊、任务与交付](landscape/2026-10-29-dsh-multi-bot-composition.md)。
 - [基于 DeepSeek Harness：构建目标驱动的多 Bot 群聊与交付](landscape/2026-10-29-dsh-interactive-goals.md)。
