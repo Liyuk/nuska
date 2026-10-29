@@ -1,7 +1,9 @@
 # Grok Bot 逆向研究资料：阅读入口与适用边界
 
-收录日期：2026-10-29  
-资料：[oceanz0312/grok-bot-analysis](https://github.com/oceanz0312/grok-bot-analysis)  
+收录日期：2026-10-29
+
+资料：[oceanz0312/grok-bot-analysis](https://github.com/oceanz0312/grok-bot-analysis)
+
 参考快照：[272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20](https://github.com/oceanz0312/grok-bot-analysis/tree/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20)
 
 ## 这是什么
