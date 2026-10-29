@@ -1,0 +1,28 @@
+name: 实验与验证
+description: 提出可以执行的实验、案例或评估
+labels: [experiment]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 问题与目标
+      description: 希望验证什么？它与用户意图、长任务或交付质量有什么关系？
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: 场景与方法
+      description: 描述任务、环境、基线及可能出现的目标或上下文变化。
+  - type: textarea
+    id: evaluation
+    attributes:
+      label: 结果与验证
+      description: 如何判断阶段性结果、最终交付及其证据是否充分？
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考资料
+      description: 可选；提供相关来源和已有实验。

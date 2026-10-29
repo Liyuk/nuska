@@ -26,7 +26,7 @@ Nuska 是一个长期研究与实践项目，探索如何让 AI 理解人的意�
 
 ## 参与研究
 
-欢迎通过 [Issues](https://github.com/Liyuk/nuska/issues) 提出研究问题、补充资料或报告错误；参与方式和证据标准见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+欢迎在 [Discussions](https://github.com/Liyuk/nuska/discussions) 分享想法、体验和问题，通过 [Issues](https://github.com/Liyuk/nuska/issues) 提出研究任务、实验或报告错误；参与方式和证据标准见 [CONTRIBUTING.md](CONTRIBUTING.md)。仓库设置和参考依据见 [GitHub 配置说明](docs/github-setup.md)。
 
 仓库目前尚未声明开源许可证。
 

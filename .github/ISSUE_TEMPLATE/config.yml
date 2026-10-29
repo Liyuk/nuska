@@ -1,1 +1,8 @@
 blank_issues_enabled: true
+contact_links:
+  - name: 分享想法或讨论研究方向
+    url: https://github.com/Liyuk/nuska/discussions/new?category=ideas
+    about: 开放式想法、使用体验和待探索的问题欢迎在 Discussions 交流。
+  - name: 提问与求助
+    url: https://github.com/Liyuk/nuska/discussions/new?category=q-a
+    about: 关于项目或研究资料的问题可以在 Discussions 提出。

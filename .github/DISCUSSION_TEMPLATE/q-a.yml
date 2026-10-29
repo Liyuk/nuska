@@ -1,0 +1,15 @@
+body:
+  - type: markdown
+    attributes:
+      value: 欢迎提问。请勿附上密钥、私人对话或其他敏感信息。
+  - type: textarea
+    id: question
+    attributes:
+      label: 你想了解或完成什么？
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 背景和已尝试的方法
+      description: 写出已知的信息即可；项目、版本和相关链接都有帮助。

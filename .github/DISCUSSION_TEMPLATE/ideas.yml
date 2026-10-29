@@ -1,0 +1,21 @@
+body:
+  - type: markdown
+    attributes:
+      value: 欢迎分享关于意图理解、长任务、多 Agent 协作或可验证交付的想法。请避免包含私密信息。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 场景和问题
+      description: 你遇到了什么问题，希望完成什么目标？
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 想法或可能的方向
+      description: 可以是尚未成形的观察，不需要先设计完整方案。
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 相关资料与验证方式
+      description: 可选；请附上来源、体验或可能的实验方式，并区分事实与猜想。
