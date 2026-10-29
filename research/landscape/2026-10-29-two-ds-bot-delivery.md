@@ -1,6 +1,6 @@
 # 两个 DeepSeek Bot 实现与长任务交付：初步证据
 
-日期：2026-10-29。范围：静态源码、项目 README 和设计记录；未运行两个系统，也未做 Grok Bot 对照实验。本文研究问题来自用户判断，并不声称发现了所有实现或证明运行时成功率。
+日期：2026-10-29。范围：静态源码、项目 README 和设计记录；GitHub main 版本再次核对为下述 SHA，未运行两个系统，也未做 Grok Bot 对照实验。本文研究问题来自用户判断，并不声称发现了所有实现或证明运行时成功率。
 
 ## 研究问题
 
@@ -14,8 +14,8 @@
 
 ## Fei2411/DS-Bot：有明确的自主推进限制
 
-1. **群接力限额会暂停后续 Bot 间接力。** 本地 `groups.js` 定义默认值为成员数三倍；Bot 互相调用达到阈值后，后续接力被停放，用户发言或按 Continue 后可继续。已有正在执行的工作与群接力不完全相同：源码说明长工具工作可以继续，不应表述为所有任务被终止。[固定版本源码](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/ds-bot/src/host/groups.js)
-2. **Bot 会话屏蔽 DSH goal。** 本地 `tools.js` 隐藏 create/get/update goal 工具，并把在 Bot 或群会话启动的活跃 goal 标为 blocked；注释指出 DS Bot 不跨对话分段保留 goal。已有让步记录把这解释为命令和会话边界问题，并提出未来 Bot 自身跨段目标能力作为方向。[源码](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/ds-bot/src/host/tools.js) · [设计记录](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/docs/plans/2026-10-13-dsh-concessions.md)
+1. **群接力限额会暂停后续 Bot 间接力。** 本地 `groups.js` 定义默认值为成员数三倍；Bot 互相调用达到阈值后，后续接力被停放，用户发言或按 Continue 后可继续。已有正在执行的工作与群接力不完全相同：源码说明长工具工作可以继续，不应表述为所有任务被终止。[固定版本源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/groups.js)
+2. **Bot 会话屏蔽 DSH goal。** 本地 `tools.js` 隐藏 create/get/update goal 工具，并把在 Bot 或群会话启动的活跃 goal 标为 blocked；注释指出 DS Bot 不跨对话分段保留 goal。已有让步记录把这解释为命令和会话边界问题，并提出未来 Bot 自身跨段目标能力作为方向。[源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/tools.js) · [设计记录](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/docs/plans/2026-10-13-dsh-concessions.md)
 3. **含义与限制。** 这两项是明确的执行约束，可能导致依赖 Bot 接力或 DSH goal 的任务需要用户再次干预；静态代码不能证明所有长任务失败，也不能说明限额必然不合理。它控制失控和成本，但与用户期望的低监督持续交付存在待测张力。
 
 ## BotHarness/DeepSeekBot：已有专门的委派机制

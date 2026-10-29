@@ -30,6 +30,8 @@
 
 [`dsh-goal-round-driver`](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/packages/goal/goal-round-driver/README.zh.md) 在 Agent 空闲、目标 active、续行已启用且轮次有剩余时，安排同会话的下一次 Goal Round。它在准入前后核对目标版本；普通人类消息不消耗 Goal Round 上限，有竞争的人类工作会优先于自动轮次。更一般的实时输入与状态机制见 [Agent 生命周期](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/docs/agent-lifecycle.zh.md)。
 
+此外，2026-10-29 查看上游较新快照 [`f3803c96` 的驱动器文档](https://github.com/deepseek-ai/deepseek-harness/blob/f3803c96974ad4a94195fb97e5c637e9c2a3afe3/packages/goal/goal-round-driver/README.md)时，文档指出加载 subagent 服务时会等待正在推进的后代 settle；具体运行时行为与旧版本的差异尚需测试。
+
 因此它并不只是无限调用模型：持久状态、版本检查、用户输入和轮次准入都有明确语义。与此同时，驱动器的停止条件及恢复边界应被视为设计约束，而非可忽略的实现细节。
 
 ### 恢复与授权

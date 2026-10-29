@@ -1,6 +1,6 @@
 # Grok Bot 任务机制：证据与 Nuska 研究假设
 
-状态：第三方资料分析，2026-10-29；尚未独立验证或运行 Grok Bot。分析基于 [oceanz0312 的 Grok Bot 0.70.2 研究快照](https://github.com/oceanz0312/grok-bot-analysis/tree/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20)，不能代表当前版本。
+状态：公开资料研究，查阅于 2026-10-29；尚未独立验证或运行 Grok Bot。第三方分析基于 [Grok Bot 0.70.2 研究快照](https://github.com/oceanz0312/grok-bot-analysis/tree/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20)；官方在线文档会变化，不一定对应该版本。
 
 ## 用户问题
 
@@ -8,9 +8,19 @@
 
 ## 资料中可定位的证据
 
+### 官方描述：产品行为和设计目标
+
+- [产品概览](https://docs.x.ai/grok-bot/overview)称 Bot 可并行运行、互相发消息、在群聊中共享上下文并移交任务；关闭客户端不会停止后台回合或例行任务。这是产品描述，不能据此推断长任务可靠性。
+- [协作文档](https://docs.x.ai/grok-bot/chat-and-collaboration)描述群里普通消息可由参与者决定谁回复，Bot 可以异步交接、唤醒接收方并稍后回复；用户可发送新消息调整正在进行的工作。文档同时建议为每个阶段指定负责人。这些是产品支持和使用建议，不代表每次委派都被正确完成。
+- [设计文章](https://x.ai/news/designing-grok-bot)称群聊提供项目共享上下文，个体 Bot 保有专门记忆；工具和 Skills 在账户层，记忆和 Routines 属于 Bot。官方 [概览](https://docs.x.ai/grok-bot/overview)补充：每个 Bot 的对话和学习上下文通常分开，少量用户信息共享；同一账户的 Bots 共享云电脑上的文件、浏览器会话和登录。**共享运行环境、群上下文和个体记忆是不同边界**，不能推论所有记忆自动互通。
+- [协作文档](https://docs.x.ai/grok-bot/chat-and-collaboration)也指出 Bot 间私聊交接不一定出现在群里，群内交接消息为文本；审批、凭据请求等不在群里出现。因此只看群消息可能无法获得完整执行证据。
+
+### 第三方客户端分析：0.70.2
+
 - 第三方资料报告，客户端协议有接收结果和拒绝/重复等不同投递状态，并有 transcript 订阅；它区分接收与完成。该资料以代码或协议为依据，**静态存在不等于已观察到运行**。[Agent 子系统](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/subsystems/agent.md)
 - 同一资料列出任务读取与标记、成员回合、后台执行相关接口；据此提出的服务端调度及工作流实现属于作者推断，不能从客户端接口推定任务确已领取、实际完成或得到验收。[Agent 子系统](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/subsystems/agent.md)
 - 资料分析群成员回合和返回结果，并讨论多 Agent 及记忆；这些设计是后续观察的切入点，不足以证明群体交付可靠。[多 Agent 研究](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/subsystems/multiagent-memory-security.md)
+- 同一研究在静态客户端材料中列出群成员回合请求、去重键与多种回合结果；它对模型何时选择不发言的解释属于推断。该篇明确声明只做静态阅读，不能当作动态运行验证。[群聊与记忆分析](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/subsystems/multiagent-memory-security.md)
 - 阅读时遵守原研究对观察、推断、未知及推荐的区分；客户端无法直接验证未公开的服务端决策或验收机制。[方法与范围](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/methodology/evidence-levels.md)
 
 ## 需要检验的机制

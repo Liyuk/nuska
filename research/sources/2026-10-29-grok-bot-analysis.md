@@ -6,9 +6,11 @@
 
 参考快照：[272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20](https://github.com/oceanz0312/grok-bot-analysis/tree/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20)
 
+补充查阅：2026-10-29。官方在线资料分别提供[产品概览](https://docs.x.ai/grok-bot/overview)、[群聊与交接说明](https://docs.x.ai/grok-bot/chat-and-collaboration)和[产品设计文章](https://x.ai/news/designing-grok-bot)。这些描述现行产品行为和设计目标，不一定对应下述 0.70.2 客户端快照，也不构成独立的交付可靠性评估。
+
 ## 这是什么
 
-这是第三方对 Grok Bot **0.70.2** 桌面客户端的研究资料。作者说明使用了客户端静态分析、脱敏网络观测和 REA 核验，覆盖 Agent、客户端、云端执行环境、多 Agent、记忆、协议与安全等主题。它不是 Grok Bot 的官方设计文档，也不能默认代表当前版本。[项目 README](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/README.md)
+这是第三方对 Grok Bot **0.70.2** 桌面客户端的研究资料。作者说明使用了客户端静态分析、脱敏网络观测和 REA 核验，覆盖 Agent、客户端、云端执行环境、多 Agent、记忆、协议与安全等主题。具体章节的方法并不相同：例如多 Agent 与记忆章节明确声明只做静态阅读。它不是 Grok Bot 的官方设计文档，也不能默认代表当前版本。[项目 README](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/README.md)、[多 Agent 章节](https://github.com/oceanz0312/grok-bot-analysis/blob/272439bf4ff4ecc3bdb8190dbdd78fecd00f7b20/docs/subsystems/multiagent-memory-security.md)
 
 ## 与 Nuska 相关的入口
 

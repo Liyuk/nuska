@@ -17,6 +17,10 @@
 
 ## 已整理的起点
 
+- [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
+
+- [群上下文与个体记忆：公开方案与未解问题](context/2026-10-29-memory-and-shared-context.md)。
+- [多 Agent 分派与恢复：公开参考](execution/2026-10-29-team-execution.md)。
 - [Grok Bot 任务机制：证据与研究假设](landscape/2026-10-29-grok-task-mechanisms.md)。
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
 - [DSH、Pi 与 Hermes 接入调研](landscape/2026-10-29-harness-integration.md)。
@@ -32,7 +36,7 @@
 
 1. 盘点个人博客、工程工作流、harness 研究、DSBot 的已有问题与设计；记录原处与是否可公开。
 2. 记录用户实际使用 Grok Bot 的完整任务，核实产品版本和环境。
-3. 挑一个同类任务，为候选系统设计可比较的任务输入、验收、观察与验收记录。
+3. 挑一个同类任务，为候选系统设计可比较的任务输入、验收、观察与验收证据。
 4. 检查当前 DSH 与其他候选宿主的官方扩展接口，再选择第一个实验接入点。
 
 个人口述、工作经历与会话原始记录不自动进入公开材料；公开摘要应先核对内容和分享范围。
