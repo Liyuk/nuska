@@ -18,6 +18,7 @@
 ## 已整理的起点
 
 - [Grok Bot 逆向研究资料：阅读入口与适用边界](sources/2026-10-29-grok-bot-analysis.md)。
+- [基于 DeepSeek Harness：从交互式目标到可验证交付](landscape/2026-10-29-dsh-interactive-goals.md)。
 - [两个 DeepSeek Bot 实现与长任务交付：初步证据](landscape/2026-10-29-two-ds-bot-delivery.md)。
 - [DS Bot 社区讨论：本人原帖归档](community/ds-bot/README.md)。
 - [从意图到交付：问题研究](synthesis/2026-10-29-intent-to-delivery.md)。
