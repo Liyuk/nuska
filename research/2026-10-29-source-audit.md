@@ -10,7 +10,7 @@
 | 交互目标与 DSH | [DSH 与多 Bot 方案](landscape/2026-10-29-dsh-interactive-goals.md) | 旧固定版本基础上补查当前公开 goal 文档；跨会话协调、验收策略仍为方案，未实现 |
 | DSH、Pi、Hermes | [接入调研](landscape/2026-10-29-harness-integration.md) | 固定源码版本，纠正 Pi 和 Hermes 续行、委派能力的描述；尚未运行同任务对照或验证所有宿主模式 |
 | 群聊、个人记忆与共享上下文 | [上下文与记忆](context/2026-10-29-memory-and-shared-context.md) | 对照 LangGraph、Letta、AutoGen、DSH 及外部项目；文档机制不证明在用户任务中有效 |
-| 任务分派、领取与恢复 | [执行调研](execution/2026-10-29-team-execution.md) | 引用 Magentic-One、AutoGen、BotHarness、Temporal、OpenHands 的公开材料；候选机制尚无 Nuska 原型 |
+| 任务分派、领取与恢复 | [执行调研](execution/2026-10-29-team-execution.md)、[多 Agent 调度与 Broker](landscape/2026-10-29-multi-agent-orchestration.md)、[TradingAgents](landscape/2026-10-29-tradingagents.md) | 引用 Magentic-One、AutoGen、BotHarness、Temporal、OpenHands 的公开材料；候选机制尚无 Nuska 原型 |
 | DSBot 社区与两个实现 | [社区问题](community/ds-bot/2026-10-29-research-themes.md)、[两种实现](landscape/2026-10-29-two-ds-bot-delivery.md) | 本人帖子与代码版本可追溯；其他社区反馈不能当作普遍体验或已复现故障 |
 | 阶段交付与结果度量 | [交付评测](evaluation/2026-10-29-delivery-benchmark.md) | 对照公开基准的覆盖与局限；没有 Nuska 测试结果、成功率或排名 |
 | 目标与研究假说 | [意图到交付](synthesis/2026-10-29-intent-to-delivery.md) | 用户目标和问题框架来自个人观察与社区讨论，尚未系统验证 |

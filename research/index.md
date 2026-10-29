@@ -20,6 +20,8 @@
 - [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
 
 - [群上下文与个体记忆：公开方案与未解问题](context/2026-10-29-memory-and-shared-context.md)。
+- [多 Agent 调度、通信与交付：从群聊到 Broker](landscape/2026-10-29-multi-agent-orchestration.md)。
+- [TradingAgents：多角色决策图与交付](landscape/2026-10-29-tradingagents.md)。
 - [多 Agent 分派与恢复：公开参考](execution/2026-10-29-team-execution.md)。
 - [Grok Bot 任务机制：证据与研究假设](landscape/2026-10-29-grok-task-mechanisms.md)。
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
