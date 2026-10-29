@@ -24,7 +24,7 @@
 
 在原先固定的 `219cc443` 快照之外，2026-10-29 又查看了上游 `master` 的 [`f3803c96` 目标驱动文档](https://github.com/deepseek-ai/deepseek-harness/blob/f3803c96974ad4a94195fb97e5c637e9c2a3afe3/packages/goal/goal-round-driver/README.md)：驱动器在 agent 整体空闲、续行已授权且轮次有剩余时推进；如果加载了 subagent 服务，还会等待正在推进的后代 settle。目标版本修改会通过 revision fence 使旧轮次失效。恢复或 fork 后 active 目标仍需人工授权 resume，临时 provider 或持久化故障不会隐式自动重试。这些描述是该快照的契约，不代表群任务跨进程自动恢复。
 
-**对 Nuska 的意义**：可先复用同会话目标和轮次准入，而群成员责任、可追溯派发、阶段产物与独立验收仍须单独设计；尤其要测试目标修订与正在运行的子任务如何交互，不能假定 revision fence 会自动撤销所有外部副作用。
+**对 Nuska 的意义**：可先研究复用同会话目标、轮次准入以及实验性 Team 的成员与任务板；跨群责任、派发投递保障、阶段产物与独立验收仍须验证或补足；尤其要测试目标修订与正在运行的子任务如何交互，不能假定 revision fence 会自动撤销所有外部副作用。
 
 ### Pi：扩展可以控制续行，但需自建目标语义
 
@@ -61,3 +61,6 @@ Nuska 核心可能需要目标版本、阶段成果、交付证据、工作状�
 ## 下一步验证
 
 从[交付评测方案](../evaluation/2026-10-29-delivery-benchmark.md)选一个任务，先在一个宿主实现真实事件采集和独立验收，再在第二宿主复现。测试目标中途修订、阶段交付、失败、终止和恢复；为不支持的宿主能力明确标注限制。收集证据后再确定插件形式和公共接口。
+
+
+补充：[DSH Agent Team、计划、重复提醒、Ralph 与 workflow 的组合及限制](2026-10-29-dsh-multi-bot-composition.md)。

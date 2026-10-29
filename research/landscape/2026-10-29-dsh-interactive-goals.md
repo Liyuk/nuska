@@ -64,7 +64,7 @@ DSH 接入层：会话、Agent、工具、事件、可选 goal 与续行
 文件与工具结果 / 阶段产物 / 最终交付
 ```
 
-[DSH 架构](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/docs/architecture.md)区分可持久重放的 `session/event` 与运行中的 `agent/*` 事件；插件通过 Cordis 组合。这个边界是候选接入点，不说明 DSH 已提供群任务系统。Nuska 可以作为插件、组合插件集或外部服务，先通过实验决定；底层 DSH 不是已定选型。
+[DSH 架构](https://github.com/deepseek-ai/deepseek-harness/blob/219cc4434efe27bb38573d98e79b4ddc714dacea/docs/architecture.md)区分可持久重放的 `session/event` 与运行中的 `agent/*` 事件；插件通过 Cordis 组合。这个边界是候选接入点。补充核查：DSH 已有实验性 Agent Team，提供 Lead、成员、共享任务板、claim、依赖和消息；它的范围及不足见[DSH 现有能力组合研究](2026-10-29-dsh-multi-bot-composition.md)，不能再把团队任务原语视为完全不存在。Nuska 可以作为插件、组合插件集或外部服务，先通过实验决定；底层 DSH 不是已定选型。
 
 ### 4.1 群聊是任务入口，也承载可用的阶段结果
 
