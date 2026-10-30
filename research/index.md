@@ -17,6 +17,11 @@
 
 ## 已整理的起点
 
+### 实施方案
+
+- [Grok bots 编排、Codex CLI 执行、脚本调度与监控](../docs/approaches/orchestrator-codex-executor.md)：一份在用实践方案，组件评审状态和未测量事项见正文。
+- [实施方案索引](../docs/approaches/README.md)：后续工具实现方案的入口与格式。
+
 - [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
 
 - [群上下文与个体记忆：公开方案与未解问题](context/2026-10-29-memory-and-shared-context.md)。
