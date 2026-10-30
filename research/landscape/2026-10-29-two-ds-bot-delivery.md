@@ -4,19 +4,19 @@
 
 ## 研究问题
 
-用户观察：两个项目的交互与组织方式似乎没有充分解决长任务中的目标漂移、虚报完成和交付型协作，部分限制可能妨碍自主推进。这是待验证的假设。这里的“长任务幻觉”暂指未经证据支持地声称进展、委派或完成，不等同于所有事实性幻觉。
+使用观察：两个项目的交互与组织方式似乎没有充分解决长任务中的目标漂移、虚报完成和交付型协作，部分限制可能妨碍自主推进。这是待验证的假设。这里的“长任务幻觉”暂指未经证据支持地声称进展、委派或完成，不等同于所有事实性幻觉。
 
 ## 版本与材料
 
-- **Fei2411/DS-Bot**：本地 checkout `e0432463bd4f88b36c562ab2fcc40696b96e3359`；本次检查的 `groups.js`、`tools.js` 没有本地修改。查看时远端 `main` 为 `4a7b55069ad300eae8be42a74f31bc170b40ead7`，另行核对了该远端版本的 `groups.js` 与 `tools.js`，下述限额和 goal 屏蔽逻辑仍存在。
+- **Fei2411/DS-Bot**：以公开发行版本 `v0.2.3` 和 GitHub `main` 的固定提交 `4a7b55069ad300eae8be42a74f31bc170b40ead7` 为依据；未运行系统。
 - **BotHarness/DeepSeekBot（Tobs）**：GitHub `main`，`acb73c46c09da94d2d924595edc2a67f9e68607b`；读取 README、相关 ADR 和少量源文件；没有完整审计源码。
-- 个人历史反馈见本地 `private/sources/github-ds-bot/`，如 [issue #611](https://github.com/Fei2411/DS-Bot/issues/611) 对接力上限及任务结束条件的讨论。
+- 相关公开讨论见 [issue #611](https://github.com/Fei2411/DS-Bot/issues/611)，内容涉及接力上限及任务结束条件。
 
 ## Fei2411/DS-Bot：有明确的自主推进限制
 
-1. **群接力限额会暂停后续 Bot 间接力。** 本地 `groups.js` 定义默认值为成员数三倍；Bot 互相调用达到阈值后，后续接力被停放，用户发言或按 Continue 后可继续。已有正在执行的工作与群接力不完全相同：源码说明长工具工作可以继续，不应表述为所有任务被终止。[固定版本源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/groups.js)
-2. **Bot 会话屏蔽 DSH goal。** 本地 `tools.js` 隐藏 create/get/update goal 工具，并把在 Bot 或群会话启动的活跃 goal 标为 blocked；注释指出 DS Bot 不跨对话分段保留 goal。已有让步记录把这解释为命令和会话边界问题，并提出未来 Bot 自身跨段目标能力作为方向。[源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/tools.js) · [设计记录](https://github.com/Fei2411/DS-Bot/blob/e0432463bd4f88b36c562ab2fcc40696b96e3359/docs/plans/2026-10-13-dsh-concessions.md)
-3. **含义与限制。** 这两项是明确的执行约束，可能导致依赖 Bot 接力或 DSH goal 的任务需要用户再次干预；静态代码不能证明所有长任务失败，也不能说明限额必然不合理。它控制失控和成本，但与用户期望的低监督持续交付存在待测张力。
+1. **群接力限额会暂停后续 Bot 间接力。** `groups.js` 定义默认值为成员数三倍；Bot 互相调用达到阈值后，后续接力被停放，用户发言或按 Continue 后可继续。已有正在执行的工作与群接力不完全相同：源码说明长工具工作可以继续，不应表述为所有任务被终止。[固定版本源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/groups.js)
+2. **Bot 会话屏蔽 DSH goal。** `tools.js` 隐藏 create/get/update goal 工具，并把在 Bot 或群会话启动的活跃 goal 标为 blocked；注释指出 DS Bot 不跨对话分段保留 goal。已有让步记录把这解释为命令和会话边界问题，并提出未来 Bot 自身跨段目标能力作为方向。[源码](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/ds-bot/src/host/tools.js) · [设计记录](https://github.com/Fei2411/DS-Bot/blob/4a7b55069ad300eae8be42a74f31bc170b40ead7/docs/plans/2026-10-13-dsh-concessions.md)
+3. **含义与限制。** 这两项是明确的执行约束，可能导致依赖 Bot 接力或 DSH goal 的任务需要用户再次干预；静态代码不能证明所有长任务失败，也不能说明限额必然不合理。它用于限制接力，但与低监督持续交付的目标的低监督持续交付存在待测张力。
 
 ## BotHarness/DeepSeekBot：已有专门的委派机制
 
@@ -45,5 +45,13 @@
 
 - 在 Fei2411 最新 main 上实际运行接力上限和 goal 场景，检查用户感知与恢复行为。
 - 追踪 Tobs Assignment 创建、终止、恢复和报告的实际实现与测试，包括是否存在独立验收路径。
-- 搜索并归档用户在 BotHarness 仓库的 issue/discussion；目前按 GitHub `Liyuk` 搜索 issue 作者与评论者为零，discussion 未完成完整检索。
-- 在不暴露个人或组织内容的前提下整理具体案例，保留原始日志和环境。
+- 补充检索 BotHarness 仓库公开的 issue 与 discussion，记录检索范围和未覆盖部分。
+- 使用可公开复现的案例补充分析；涉及私人或组织环境的日志不纳入公开材料。
+
+## 后续产物
+
+本轮核验之后，又补了三份与本稿直接相关的分析（均未运行系统）：
+
+- [DSH 的 Agent 是实体还是会话？——身份、persona 与两种 Bot 实现](2026-10-29-dsh-agent-session-identity.md)：Agent 是 Session 的实时执行面；ds-bot 用第一个私聊 session id 当 Bot 身份，Tobs 用 registry 实体。
+- [DS Bot 与 Tobs 的任务执行对照](2026-10-29-dsbot-vs-tobs-execution.md)：对话驱动 vs 控制面驱动的执行链路、并发、恢复与问责差异。
+- [Tobs 的交付能力评估证据](../evaluation/2026-10-29-tobs-delivery-evaluation.md)：Tobs 有真实模型多 Bot E2E 与功能验收，但没有交付质量、虚报完成与长任务恢复的公开评估。

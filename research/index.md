@@ -17,6 +17,11 @@
 
 ## 已整理的起点
 
+### 实施方案
+
+- [Grok bots 编排、Codex CLI 执行、脚本调度与监控](../docs/approaches/orchestrator-codex-executor.md)：一份在用实践方案，组件评审状态和未测量事项见正文。
+- [实施方案索引](../docs/approaches/README.md)：后续工具实现方案的入口与格式。
+
 - [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
 
 - [群上下文与个体记忆：公开方案与未解问题](context/2026-10-29-memory-and-shared-context.md)。
@@ -35,6 +40,24 @@
 - [DS Bot 社区讨论：本人原帖归档](community/ds-bot/README.md)。
 - [从意图到交付：问题研究](synthesis/2026-10-29-intent-to-delivery.md)。
 - [DS Bot 社区讨论中的研究问题](community/ds-bot/2026-10-29-research-themes.md)。
+
+### 2026-10-29 同日一批的后续产物
+
+这三份是上面三篇调研稿的对照与核验，另加一份据此修订的设计方案。前两篇只做源码与公开文档对照，未运行实验。
+
+- [审阅：多 Bot 群聊与交付的能力盘点是否站得住](landscape/2026-10-29-dsh-multi-bot-composition-review.md)。对上列三篇的层级、版本与缺口判断逐条校正：承载层是 ds-bot 而非 DSH 实验原语；goal 在 Bot 会话被显式禁用；验收已有判断但输出被丢弃；群 `@` 派活不进工作树。
+- [DSH 原语核验：文档说法与本机安装的差别](landscape/2026-10-29-dsh-primitives-verification.md)。八个原语逐条对照源码，附文档漏掉的已装能力，以及"profile 启用不等于会话可用"这一层。
+- [DS Bot 归档证据清单：需求、失败与缺口](community/ds-bot/2026-10-29-requirements-evidence.md)。22 篇公开帖子逐行整理，按证据等级标注，并写明"只收作者本人原帖、无维护者回复"这一限制。
+- [交付式协作的最小实现设计](synthesis/2026-10-29-delivery-collaboration-design.md)。目标对象与版本、工具面的交付记录、复用既有检查器、两处工作记录，以及身份（persona）的六层分层与三条硬约束。
+
+### 2026-10-29 多 Agent 评审与执行对照（追加）
+
+这批包括交叉审阅、实现对照与评测分析；未运行系统，结论以公开源码和文档为限。
+
+- [DSH 的 Agent 是实体还是会话？——身份、persona 与两种 Bot 实现](landscape/2026-10-29-dsh-agent-session-identity.md)。Agent 是 Session 的实时执行面；ds-bot 用第一个私聊 session id 当 Bot 身份，Tobs 把身份放进 registry；persona 两边都是按 session 渲染的共享配置。
+- [DS Bot 与 Tobs 的任务执行对照](landscape/2026-10-29-dsbot-vs-tobs-execution.md)。对话驱动 vs 控制面驱动；前台/后台、问责链路、网状 vs 星形、完成与恢复语义的差异。
+- [Tobs 的交付能力评估证据](evaluation/2026-10-29-tobs-delivery-evaluation.md)。有真实模型多 Bot E2E 与功能验收，没有面向交付质量、虚报完成与长任务恢复的评估；给出可复用的评测方案。
+- [多 Agent 评审：DSH Team、DS Bot 与交付问题](synthesis/2026-10-29-agent-panel-review.md)。四角色两轮评审的共识、分歧与 10 条版本敏感勘误；Phase 0/1/2/3 推荐路线。
 
 ## 最先整理的材料
 
