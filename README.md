@@ -19,9 +19,9 @@ Nuska 是一个 AI Agent 研究与实践项目，探索如何让 AI 理解人的
 
 ## 项目方向
 
-[项目总规划](docs/project-plan.md) · [研究地图](research/index.md) · [项目结构](docs/project-structure.md) · [架构草案](docs/architecture/system-overview.md) · [社区讨论归档](research/community/ds-bot/README.md)
+[项目总规划](docs/project-plan.md) · [研究地图](research/index.md) · [项目结构](docs/project-structure.md) · [架构草案](docs/architecture/system-overview.md) · [实施方案](docs/approaches/README.md) · [社区讨论归档](research/community/ds-bot/README.md)
 
-以上均为讨论草案，记录研究、实验、工程与框架集成的方向。
+项目总规划、项目结构和架构草案记录讨论方向；实施方案记录特定场景中的实践机制。
 
 项目将逐步汇集使用观察、历史研究、案例、实验和原型。Grok Bot 是一个体验参照；具体使用哪些模型、工具或 agent harness 尚未决定。
 
