@@ -26,6 +26,7 @@
 - [Grok Bot 任务机制：证据与研究假设](landscape/2026-10-29-grok-task-mechanisms.md)。
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
 - [DSH、Pi 与 Hermes 接入调研](landscape/2026-10-29-harness-integration.md)。
+- [dsh-superagent：从消息入口到可恢复的代码交付](landscape/2026-11-01-dsh-superagent-analysis.md)。基于固定上游提交的源码与文档分析，并讨论它与 DS-bot 的集成边界；未运行原型或验证集成。
 
 - [System Prompts Leaks：Grok Bot 提示词与工具线索](sources/2026-10-29-system-prompts-leaks.md)。
 - [Grok Bot 逆向研究资料：阅读入口与适用边界](sources/2026-10-29-grok-bot-analysis.md)。
