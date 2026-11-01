@@ -1,16 +1,17 @@
-# dsh-superagent：从消息入口到可恢复的代码交付
+# dsh-superagent 与 Grok Bot：任务管道、个人 Agent 与监督边界
 
 状态：上游源码与文档分析 · 2026-11-01。分析对象为 DeepSeek AI 的公开研究原型，不是 Nuska/DS-bot 的实现，也不是运行效果评测。
 
 ## 问题与范围
 
-这份分析回答三个问题：dsh-superagent 如何把聊天或 GitHub 消息变成受策略约束的代码任务；它如何执行、交付并从故障中恢复；其中哪些边界适合 DS-bot 复用或集成。
+这份分析回答四个问题：dsh-superagent 如何把聊天或 GitHub 消息变成受策略约束的代码任务；它如何执行、交付并从故障中恢复；它和 Grok Bot 的个人 Agent 形态有什么不同；这些系统的监督机制能否覆盖目的保持、语义纠偏和可验证交付。
 
 ## 结论摘要
 
 - dsh-superagent 不是聊天平台，也不是通用通信标准。它是运行在 DeepSeek Harness（DSH）中的单仓库 Agent bundle：GitHub 是主要入口，Feishu 是可选入口；来源适配器把平台事件转成内部 Trigger，再通过 Source 的 Channel 发回结果。[README](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/README.md) · [领域模型](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/001-domain.md)
 - 它不只是机械派工：在主动候选路径中，模型要判断讨论是否表达了明确、方向已定的实现意图，并记录原文证据。但这主要决定“是否接单”；代码中没有看到把用户目的持续表示成可修订目标、逐项验收条件和纠偏状态的闭环。[Admission prompt](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/prompts/admission.md) · [Ticket 模型](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/src/core/model.ts)
 - 它把“收到消息”和“获准执行”分开：策略门禁与模型评估形成 Decision 和不可变 Mandate；获准后创建 Ticket，由独立 Executor Session 与目录执行。Thread 订阅负责把后续上下文交给已有 Ticket，不会扩大授权范围。[授权模型](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/002-authorization.md) · [执行模型](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/003-execution.md)
+- Grok Bot 在产品体验上更接近个人交付 Agent：官方资料描述持久云电脑、跨会话记忆、Bot 间协作和中途消息；其 Auto Review 监督的是即将执行的动作。公开资料没有证明它具备目标版本、语义纠偏或独立成果验收闭环。[Grok Bot 概览](https://docs.x.ai/grok-bot/overview) · [审批机制](https://docs.x.ai/grok-bot/approvals-security-and-privacy)
 - 它实现了应用内部的 Source 扩展接口，但这不是可独立部署的跨平台通信协议。DS-bot 可以借鉴其 Source/Trigger/Channel 的分层；若要让 dsh-superagent 接收 DS-bot 所在渠道的请求，则要适配 DSH 插件、会话、策略和状态模型，不能只接一个聊天 Webhook。[Source 接口](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/src/sources/kind.ts) · [扩展指南](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/008-cookbook.md)
 - 原型把 SQLite 持久化、效果队列、Ticket 状态和 DSH Session 恢复组合起来，提供了可审计、可重试的流程；但部署权限仍以操作者 OS 用户为边界。文档明确指出 worker preset 使用 `danger-full-access`，命令包装和 blocked-command 列表不是安全沙箱。[部署与权限](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/006-deployment.md) · [架构](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/007-architecture.md)
 
@@ -18,6 +19,7 @@
 
 - 上游：[`deepseek-ai/dsh-superagent-prototype`](https://github.com/deepseek-ai/dsh-superagent-prototype)，`main` 快照 `6337fc823ce20251c8de8085948165c81aaa701e`，提交日期 2026-10-31；该提交是仓库公开原型的初始提交。
 - 材料：该提交中的 README、`docs/000` 至 `docs/008`、`SETUP.md`、`package.json`，以及 `src/core`、`src/app`、`src/executor`、`src/sources` 的实现。主要以编号文档梳理概念，再用源码核对关键扩展点和状态归属。
+- Grok Bot 对照：阅读官方 [Overview](https://docs.x.ai/grok-bot/overview)、[Bots 与记忆](https://docs.x.ai/grok-bot/bots)、[协作](https://docs.x.ai/grok-bot/chat-and-collaboration)、[审批、安全与隐私](https://docs.x.ai/grok-bot/approvals-security-and-privacy)、[Skills 与 routines](https://docs.x.ai/grok-bot/skills-routines-and-automations)，访问日期 2026-11-01。它们是产品说明，不是实现源码或独立效果评测；功能会随产品更新。
 - 未安装或运行该原型，未验证 GitHub/Feishu 账号配置，也未测量完成率、恢复成功率、安全性或延迟。下文“实现事实”表示在此源码快照中有文档或代码依据；“推断”用于 DS-bot 的集成判断。
 - DS-bot 对照沿用 Nuska 对 `ds-bot@0.2.3` / commit `4a7b55069ad300eae8be42a74f31bc170b40ead7` 的既有静态研究；本报告没有重新检查 DS-bot 当前上游主线或运行它。[源码能力审阅](2026-10-29-dsh-multi-bot-composition-review.md) · [任务执行对照](2026-10-29-dsbot-vs-tobs-execution.md)
 
@@ -84,6 +86,22 @@ Web 面板将“需人处理的 Ticket、系统健康、执行负载和历史记
 
 原型需要单独 DSH Web profile、模型提供商、GitHub 上的 Agent 用户账户及独立 `gh` wrapper。Feishu bot 可选。worker preset 以操作者 OS 用户身份使用 `danger-full-access`；文档建议需要隔离时使用专用 OS 账号。`PATH` shim、Git 配置和 blocked-command 名称用于防止误用个人 CLI、固定默认身份和命令限制，但不能阻止 worker 通过绝对路径运行程序或读取该 OS 用户可读的文件。因此它的“Ticket 目录隔离”主要是工作区组织与执行边界，不等同于操作系统沙箱。[账号和权限说明](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/006-deployment.md) · [worker 命令与变量](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/docs/003-execution.md)
 
+## Grok Bot 对照：产品形态更接近，监督层仍有边界
+
+dsh-superagent 是 DSH 中面向一个 GitHub 仓库的编码 Agent：Sources 接入消息，Policy 决定准入，Ticket 绑定独立执行会话，SQLite 和效果队列保存工单与运行状态。Grok Bot 的官方产品说明则面向一般个人/团队工作：用户给持久 Bot 一项任务和上下文，Bot 在云端工作环境操作应用、文件和浏览器，可在后台继续，也可与其他 Bot 并行、共享群聊上下文和交接任务。[dsh-superagent README](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/README.md) · [Grok Bot Overview](https://docs.x.ai/grok-bot/overview)
+
+| 关注点 | Grok Bot 官方资料描述的能力 | 对目标保持与监督的意义 |
+| --- | --- | --- |
+| 上下文延续 | Bot 可保存稳定偏好、角色背景和工作摘要；文件、浏览器会话与账号也可跨任务使用。各 Bot 有各自记忆，少量用户事实共享。 | 比单次任务 Session 更接近长期个人 Agent；记忆仍不是权威事实源，也不等于带版本的当前任务目标。[记忆说明](https://docs.x.ai/grok-bot/bots) |
+| 中途修正 | 用户可在工作中继续发指令，也可纠正 Bot 记忆；云端任务可在用户离开后继续。 | 具备自然的交互纠偏入口；公开资料未说明目标修订如何使旧计划或阶段结果失效，也未展示一致性保证。[协作说明](https://docs.x.ai/grok-bot/chat-and-collaboration) · [记忆说明](https://docs.x.ai/grok-bot/bots) |
+| 长链路与复用 | Bot 可后台工作；稳定流程可保存为 Skill，并由 routine 按时间或事件启动。 | 覆盖持续执行与流程复用的产品面；官方说明没有给出目的保持、恢复正确率或最终交付质量的独立测量。[Skills 与 routines](https://docs.x.ai/grok-bot/skills-routines-and-automations) |
+| 多角色协作 | 多个 Bot 可并行、发消息、在群聊共享上下文并移交任务；Bot 的工作范围可按责任、工具和审批边界区分。 | 不只是平行的人设，存在对话、共享文件与显式交接；公开说明仍不足以证明角色提供互相独立的证据，或系统会裁决冲突并检查综合结果。[Overview](https://docs.x.ai/grok-bot/overview) · [创建与管理 Bots](https://docs.x.ai/grok-bot/bots) |
+| 人类监督 | Auto Review 在部分命令、应用或电脑操作前显示操作内容并等待批准；规则可设为始终先问或自动允许。 | 这是**动作监督**：控制 Agent 能不能执行某个副作用。它不是**目标监督**或成果验收；批准动作本身不证明行动方向正确，官方文档也明确说明批准不撤销已经完成的工作。[审批说明](https://docs.x.ai/grok-bot/approvals-security-and-privacy) |
+
+因此，Grok Bot 比 dsh-superagent 更接近“长期记忆、自然对话、多工具、多角色协作”的产品形态，也提供更多显式的人机操作边界。但从公开资料只能确认这些交互和运行机制，不能确认它是否稳定地把模糊表达转成可修订目标、在目标改变后重算工作，并独立验收最终结果。要验证用户关心的能力，应观察一项真实长任务中的目标复述、阶段证据、纠正传播、旧结果处置和终态验收，而不能把后台运行、记忆或审批卡本身当成答案。
+
+这里的“supervision”至少要区分两层：**动作监督**回答“是否允许执行”；**目标与成果监督**回答“是否仍在完成用户当前目的、证据是否满足条件”。Grok Bot 官方资料具体描述了前一层；后一层的机制和可靠性没有在所查资料中得到证实。dsh-superagent 有较显式的 Ticket/状态/恢复控制面，但也缺少结构化目标版本与独立语义验收。两者可作为不同层面的参照，不能仅凭产品演示判断谁解决了完整问题。
+
 ## 对 DS-bot 的集成判断
 
 以下是基于 dsh-superagent 扩展契约与模块边界的推断，不是已实现或测试过的集成。DS-bot 侧的参照版本是上述 `0.2.3` 快照；其接口与运行时应再对照目标部署所用版本核实。
@@ -114,3 +132,4 @@ Web 面板将“需人处理的 Ticket、系统健康、执行负载和历史记
 5. 在任何真实仓库试运行前，确定专用 OS 身份或其他隔离策略，并核对 worker 可读路径、GitHub token、可写仓库和 PR 合并规则。
 6. 用“初始目标—中途修订—发生中断—恢复交付”的长任务观察：执行者是否遵循最新目的、哪些旧工作失效、验收证据如何更新，以及系统是否能发现语义偏差而非只重试执行。
 7. 对一个需要多维讨论的同一任务，对照单 Agent、固定角色图和多 Agent 协作；记录每个角色带来的独立证据、重复上下文、分歧处理和最终产物遗漏，避免用角色数或讨论长度代替效果。
+8. 在可访问的条件下，将 Grok Bot 纳入相同的长任务与中途修订观察；单独记录产品文档宣称、实际可见行为和未能观测的内部机制。
