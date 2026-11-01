@@ -119,6 +119,8 @@ dsh-superagent 是 DSH 中面向一个 GitHub 仓库的编码 Agent：Sources �
 
 ## 适用范围、缺口与后续问题
 
+这里的缺口判断针对所检查的 dsh-superagent 快照，不能推成整个行业只有管道调度。后续[社区与行业调研](2026-11-01-goal-driven-agent-landscape.md)发现，Magentic-One 已有进度账本与停滞重规划，Anthropic 也公开了阶段验收条件、实际应用检查与修改循环。应把既有架构先例和开放目标变化下的可靠性分别评价。
+
 这是公开单提交快照的代码阅读报告。上游 README 将项目标为供参考的研究原型，说明发布版本不等同于内部实现或论文中描述的系统；功能文档也不能代替运行证据。[README 限定](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/6337fc823ce20251c8de8085948165c81aaa701e/README.md)
 
 建议后续核实：
