@@ -32,4 +32,4 @@
 
 | 方案 | 状态 | 范围 |
 | --- | --- | --- |
-| [Grok bots 编排、Codex CLI 执行、脚本调度与监控](orchestrator-codex-executor.md) | 在用实践；部分组件仍在评审 | 单一 owner 的多 Agent 团队、代码执行与脚本化调度 |
+| [多 Agent 编排与执行：通用方案草案](orchestrator-codex-executor.md) | 概念草案 | 多 Agent 分工、执行与验收 |
