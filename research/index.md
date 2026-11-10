@@ -20,6 +20,11 @@
 - [yetone/magpie：多 Agent 模型网关调研](landscape/2026-11-02-yetone-magpie-model-gateway.md)。统一不同 Agent 的模型提供商、账号、路由与用量；梳理隐私遮蔽、部署风险，以及作为 Nuska 实验基础设施的适用边界。
 - [OpenMausBot：Grok Bot 形态的本地多 Agent 工作台调研](landscape/2026-11-04-openmausbot.md)。梳理其本地 harness、持久化委派任务树、权限边界、CLI/MCP 控制面及对 Nuska 的验证价值；未实测。
 
+### 实施方案
+
+- [Grok bots 编排、Codex CLI 执行、脚本调度与监控](../docs/approaches/orchestrator-codex-executor.md)：一份在用实践方案，组件评审状态和未测量事项见正文。
+- [实施方案索引](../docs/approaches/README.md)：后续工具实现方案的入口与格式。
+
 - [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
 
 - [群上下文与个体记忆：公开方案与未解问题](context/2026-10-29-memory-and-shared-context.md)。
