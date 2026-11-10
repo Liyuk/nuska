@@ -22,7 +22,7 @@
 
 ### 实施方案
 
-- [Grok bots 编排、Codex CLI 执行、脚本调度与监控](../docs/approaches/orchestrator-codex-executor.md)：一份在用实践方案，组件评审状态和未测量事项见正文。
+- [多 Agent 编排与执行：通用方案草案](../docs/approaches/orchestrator-codex-executor.md)：一份关于分工、执行与验收的通用概念草案。
 - [实施方案索引](../docs/approaches/README.md)：后续工具实现方案的入口与格式。
 
 - [公开资料核查：覆盖、证据与缺口](2026-10-29-source-audit.md)。
@@ -43,7 +43,7 @@
 - [DSH 现有能力组合：多 Bot 群聊、任务与交付](landscape/2026-10-29-dsh-multi-bot-composition.md)。
 - [基于 DeepSeek Harness：构建目标驱动的多 Bot 群聊与交付](landscape/2026-10-29-dsh-interactive-goals.md)。
 - [两个 DeepSeek Bot 实现与长任务交付：初步证据](landscape/2026-10-29-two-ds-bot-delivery.md)。
-- [DS Bot 社区讨论：本人原帖归档](community/ds-bot/README.md)。
+- [DS Bot 社区讨论索引](community/ds-bot/README.md)。
 - [从意图到交付：问题研究](synthesis/2026-10-29-intent-to-delivery.md)。
 - [DS Bot 社区讨论中的研究问题](community/ds-bot/2026-10-29-research-themes.md)。
 
@@ -53,7 +53,7 @@
 
 - [审阅：多 Bot 群聊与交付的能力盘点是否站得住](landscape/2026-10-29-dsh-multi-bot-composition-review.md)。对上列三篇的层级、版本与缺口判断逐条校正：承载层是 ds-bot 而非 DSH 实验原语；goal 在 Bot 会话被显式禁用；验收已有判断但输出被丢弃；群 `@` 派活不进工作树。
 - [DSH 原语核验：文档说法与本机安装的差别](landscape/2026-10-29-dsh-primitives-verification.md)。八个原语逐条对照源码，附文档漏掉的已装能力，以及"profile 启用不等于会话可用"这一层。
-- [DS Bot 归档证据清单：需求、失败与缺口](community/ds-bot/2026-10-29-requirements-evidence.md)。22 篇公开帖子逐行整理，按证据等级标注，并写明"只收作者本人原帖、无维护者回复"这一限制。
+- [DS Bot 社区讨论：研究需求与证据](community/ds-bot/2026-10-29-requirements-evidence.md)。对公开讨论中的需求和研究问题作主题归纳。
 - [交付式协作的最小实现设计](synthesis/2026-10-29-delivery-collaboration-design.md)。目标对象与版本、工具面的交付记录、复用既有检查器、两处工作记录，以及身份（persona）的六层分层与三条硬约束。
 
 ### 2026-10-29 多 Agent 评审与执行对照（追加）
