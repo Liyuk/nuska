@@ -18,6 +18,7 @@ nuska/
 ├── docs/
 │   ├── project-structure.md  本文件：组织方式及研究路线
 │   ├── architecture/         可追溯的架构提案和接口草案
+│   ├── approaches/           工具实现方案、适用范围与待验证事项
 │   └── decisions/            关键决策、证据、后果及修订
 ├── research/
 │   ├── index.md              研究地图、状态与报告索引
