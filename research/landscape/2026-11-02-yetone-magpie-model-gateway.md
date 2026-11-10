@@ -1,6 +1,7 @@
 # yetone/magpie：多 Agent 模型网关调研
 
-日期：2026-11-02  
+日期：2026-11-02
+
 范围：GitHub 上的 [`yetone/magpie`](https://github.com/yetone/magpie) 及其官方文档。仓库 README、文档与代码公开说明为主要证据；没有安装或运行程序，也没有独立验证性能、安全性或订阅条款。项目名 Magpie 有歧义，本报告只讨论 yetone 维护的多模型网关。
 
 ## 摘要
