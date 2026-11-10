@@ -17,6 +17,9 @@
 
 ## 已整理的起点
 
+- [yetone/magpie：多 Agent 模型网关调研](landscape/2026-11-02-yetone-magpie-model-gateway.md)。统一不同 Agent 的模型提供商、账号、路由与用量；梳理隐私遮蔽、部署风险，以及作为 Nuska 实验基础设施的适用边界。
+- [OpenMausBot：Grok Bot 形态的本地多 Agent 工作台调研](landscape/2026-11-04-openmausbot.md)。梳理其本地 harness、持久化委派任务树、权限边界、CLI/MCP 控制面及对 Nuska 的验证价值；未实测。
+
 ### 实施方案
 
 - [Grok bots 编排、Codex CLI 执行、脚本调度与监控](../docs/approaches/orchestrator-codex-executor.md)：一份在用实践方案，组件评审状态和未测量事项见正文。
@@ -29,6 +32,7 @@
 - [TradingAgents：多角色决策图与交付](landscape/2026-10-29-tradingagents.md)。
 - [多 Agent 分派与恢复：公开参考](execution/2026-10-29-team-execution.md)。
 - [Grok Bot 任务机制：证据与研究假设](landscape/2026-10-29-grok-task-mechanisms.md)。
+- [Grok Bot 与个人交付型 Agent：机制、验收、提示词及 Dots/Cowork 对照](landscape/2026-10-31-grok-personal-agent-research.md)。结合当前官方产品资料与 GitHub 架构参照；提出自有提示词草案和可人工验收的交付标准，未实测产品。
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
 - [DSH、Pi 与 Hermes 接入调研](landscape/2026-10-29-harness-integration.md)。
 - [dsh-superagent 与 Grok Bot：任务管道、个人 Agent 与监督边界](landscape/2026-11-01-dsh-superagent-analysis.md)。基于固定上游提交分析 dsh-superagent，并与 Grok Bot 官方产品说明对照；聚焦目的保持、语义纠偏和监督边界，未运行原型或验证效果。
