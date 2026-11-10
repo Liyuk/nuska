@@ -31,6 +31,8 @@
 - [Grok Bot 任务机制：证据与研究假设](landscape/2026-10-29-grok-task-mechanisms.md)。
 - [长任务交付评测方案](evaluation/2026-10-29-delivery-benchmark.md)。
 - [DSH、Pi 与 Hermes 接入调研](landscape/2026-10-29-harness-integration.md)。
+- [dsh-superagent 与 Grok Bot：任务管道、个人 Agent 与监督边界](landscape/2026-11-01-dsh-superagent-analysis.md)。基于固定上游提交分析 dsh-superagent，并与 Grok Bot 官方产品说明对照；聚焦目的保持、语义纠偏和监督边界，未运行原型或验证效果。
+- [从用户目的到可验收结果：Agent 闭环的研究与工程现状](landscape/2026-11-01-goal-driven-agent-landscape.md)。对照 Magentic-One、厂商验收与纠偏案例、开源运行和记忆组件、自纠错论文及评测；区分已有先例、可复用组件与尚待验证的目标变化和验收问题。
 
 - [System Prompts Leaks：Grok Bot 提示词与工具线索](sources/2026-10-29-system-prompts-leaks.md)。
 - [Grok Bot 逆向研究资料：阅读入口与适用边界](sources/2026-10-29-grok-bot-analysis.md)。
