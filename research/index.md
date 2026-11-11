@@ -17,6 +17,8 @@
 
 ## 已整理的起点
 
+- [LobeHub：从多模型聊天到 Agent 工作空间](landscape/2026-11-10-lobehub.md)。梳理产品、协作机制、部署和许可边界；基于公开资料，未实测。
+- [通用 Agent 工作空间与 Super Agent 竞品对照](landscape/2026-11-10-superagent-competitors.md)。比较任务执行、协作与部署模式，提出面向 Nuska 的实验问题；未实测。
 - [yetone/magpie：多 Agent 模型网关调研](landscape/2026-11-02-yetone-magpie-model-gateway.md)。统一不同 Agent 的模型提供商、账号、路由与用量；梳理隐私遮蔽、部署风险，以及作为 Nuska 实验基础设施的适用边界。
 - [OpenMausBot：Grok Bot 形态的本地多 Agent 工作台调研](landscape/2026-11-04-openmausbot.md)。梳理其本地 harness、持久化委派任务树、权限边界、CLI/MCP 控制面及对 Nuska 的验证价值；未实测。
 
